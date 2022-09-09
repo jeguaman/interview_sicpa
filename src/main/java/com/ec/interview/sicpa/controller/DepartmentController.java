@@ -54,7 +54,7 @@ public class DepartmentController {
         return modelMapper.map(post, DepartmentDto.class);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(name = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public DepartmentDto updateDepartment(@PathVariable Integer id, @RequestBody DepartmentDto departmentDto) {

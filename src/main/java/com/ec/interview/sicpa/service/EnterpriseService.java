@@ -8,6 +8,7 @@ package com.ec.interview.sicpa.service;
 import com.ec.interview.sicpa.model.Enterprises;
 import com.ec.interview.sicpa.repository.EnterpriseRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,16 +22,25 @@ public class EnterpriseService {
     @Autowired
     private EnterpriseRepository repositoryEnterprise;
 
-    public void create(Enterprises enterprise) {
-        repositoryEnterprise.save(enterprise);
-    }
-
-    public Enterprises edit(Enterprises enterprise) {
-        return repositoryEnterprise.saveAndFlush(enterprise);
+    public Enterprises createOrEdit(Enterprises enterprise) {
+        return repositoryEnterprise.save(enterprise);
     }
 
     public List<Enterprises> findAll() {
         return repositoryEnterprise.findAll();
+    }
+
+    public Enterprises findEnterpriseById(Integer id) {
+        Optional<Enterprises> result = repositoryEnterprise.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        return null;
+    }
+
+    public Enterprises updateEnterprises(Integer id, Enterprises enterprise) {
+        Enterprises enterprises = findEnterpriseById(id);
+        return createOrEdit(enterprises);
     }
 
 }
