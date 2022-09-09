@@ -21,7 +21,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Department implements Serializable {
+public class DepartmentsEmployees implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +31,13 @@ public class Department implements Serializable {
     private String modifiedBy;
     private Date modifiedDate;
     private Boolean status;
-    private String description;
-    private String name;
-    private String phone;
     @ManyToOne
-    @JoinColumn(name = "id_enterprise", referencedColumnName = "id")
-    private Enterprise idEnterprise;
+    //@JoinColumn(name = "id_department", referencedColumnName = "id")
+    @JoinColumn(name = "id_department", referencedColumnName = "id")
+    private Departments idDepartment;
+    @ManyToOne
+    //@JoinColumn(name = "id_employee", referencedColumnName = "id")
+    @JoinColumn(name = "id_employee", referencedColumnName = "id")
+    private Employees idEmployee;
 
 }

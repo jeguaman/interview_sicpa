@@ -13,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -21,7 +23,9 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class DepartmentEmployees implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Departments implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,13 +35,11 @@ public class DepartmentEmployees implements Serializable {
     private String modifiedBy;
     private Date modifiedDate;
     private Boolean status;
+    private String description;
+    private String name;
+    private String phone;
     @ManyToOne
-    //@JoinColumn(name = "id_department", referencedColumnName = "id")
-    @JoinColumn(name = "id_department", referencedColumnName = "id")
-    private Department idDepartment;
-    @ManyToOne
-    //@JoinColumn(name = "id_employee", referencedColumnName = "id")
-    @JoinColumn(name = "id_employee", referencedColumnName = "id")
-    private Employees idEmployee;
+    @JoinColumn(name = "id_enterprise", referencedColumnName = "id")
+    private Enterprises idEnterprise;
 
 }

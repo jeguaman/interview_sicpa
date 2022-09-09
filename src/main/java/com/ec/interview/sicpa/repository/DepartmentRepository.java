@@ -5,7 +5,7 @@
  */
 package com.ec.interview.sicpa.repository;
 
-import com.ec.interview.sicpa.model.Department;
+import com.ec.interview.sicpa.model.Departments;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @author J Guaman
  */
 @Repository
-public interface DepartmentRepository extends JpaRepository<Department, Integer> {
+public interface DepartmentRepository extends JpaRepository<Departments, Integer> {
 
 }

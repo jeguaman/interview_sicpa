@@ -19,7 +19,7 @@ import lombok.Data;
  */
 @Entity
 @Data
-public class Enterprise implements Serializable {
+public class Enterprises implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
