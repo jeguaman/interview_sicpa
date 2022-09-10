@@ -42,10 +42,9 @@ public class DepartmentService {
 
     public Departments updateDepartment(Integer id, DepartmentDto departmentDto) {
         Departments department = findDepartmentById(id);
-        //TODO: se puede crear un nuevo objeto para devolver el dDepartment
         if (department != null) {
             BeanUtils.copyProperties(departmentDto, department);
-            department.setCreatedBy(departmentDto.getCreatedBy());//por si las moscas no funcione copyProperties
+//            department.setCreatedBy(departmentDto.getCreatedBy());//por si las moscas no funcione copyProperties
         }
         return createOrEdit(department);
     }

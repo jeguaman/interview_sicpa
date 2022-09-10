@@ -5,10 +5,12 @@
  */
 package com.ec.interview.sicpa.service;
 
+import com.ec.interview.sicpa.dto.EnterpriseDto;
 import com.ec.interview.sicpa.model.Enterprises;
 import com.ec.interview.sicpa.repository.EnterpriseRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +40,11 @@ public class EnterpriseService {
         return null;
     }
 
-    public Enterprises updateEnterprises(Integer id, Enterprises enterprise) {
+    public Enterprises updateEnterprises(Integer id, EnterpriseDto enterpriseDto) {
         Enterprises enterprises = findEnterpriseById(id);
+        if (enterprises != null) {
+            BeanUtils.copyProperties(enterpriseDto, enterprises, "id", "createdBy", "createdDate");
+        }
         return createOrEdit(enterprises);
     }
 

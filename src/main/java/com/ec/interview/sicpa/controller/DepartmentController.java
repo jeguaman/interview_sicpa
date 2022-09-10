@@ -45,7 +45,7 @@ public class DepartmentController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping(name = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public DepartmentDto registerDepartment(@RequestBody DepartmentDto departmentDto) {
@@ -54,7 +54,7 @@ public class DepartmentController {
         return modelMapper.map(post, DepartmentDto.class);
     }
 
-    @PutMapping(name = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public DepartmentDto updateDepartment(@PathVariable Integer id, @RequestBody DepartmentDto departmentDto) {
