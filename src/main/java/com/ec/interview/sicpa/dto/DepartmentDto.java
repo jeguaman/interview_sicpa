@@ -29,6 +29,6 @@ public class DepartmentDto implements Serializable {
     private String description;
     private String name;
     private String phone;
-    private EnterpriseDto enterprise;
+    private EnterpriseDto idEnterprise;
 
 }

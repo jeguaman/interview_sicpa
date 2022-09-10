@@ -43,8 +43,7 @@ public class DepartmentService {
     public Departments updateDepartment(Integer id, DepartmentDto departmentDto) {
         Departments department = findDepartmentById(id);
         if (department != null) {
-            BeanUtils.copyProperties(departmentDto, department);
-//            department.setCreatedBy(departmentDto.getCreatedBy());//por si las moscas no funcione copyProperties
+            BeanUtils.copyProperties(departmentDto, department, "id", "createdBy", "createdDate", "enterprise");
         }
         return createOrEdit(department);
     }

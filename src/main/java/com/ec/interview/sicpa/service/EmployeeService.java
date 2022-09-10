@@ -5,10 +5,12 @@
  */
 package com.ec.interview.sicpa.service;
 
+import com.ec.interview.sicpa.dto.EmployeesDto;
 import com.ec.interview.sicpa.model.Employees;
 import com.ec.interview.sicpa.repository.EmployeesRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,8 +40,11 @@ public class EmployeeService {
         return null;
     }
 
-    public Employees updateEmployess(Integer id, Employees employee) {
+    public Employees updateEmployess(Integer id, EmployeesDto employeeDto) {
         Employees employess = findDepartmentById(id);
+        if (employess != null) {
+            BeanUtils.copyProperties(employeeDto, employess, "id", "createdBy", "createdDate");
+        }
         return createOrEdit(employess);
     }
 
