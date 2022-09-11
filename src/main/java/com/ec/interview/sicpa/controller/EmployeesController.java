@@ -41,15 +41,23 @@ public class EmployeesController {
 
     @GetMapping()
     @ResponseBody
-    public List<EmployeesDto> getDepartments() {
+    public List<EmployeesDto> getEmployees() {
         return employessService.findAll().stream().map(enterprise -> modelMapper.map(enterprise, EmployeesDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public EmployeesDto getEmployee(@PathVariable Integer id) {
+        Employees employee = employessService.findEmployeesById(id);
+        return modelMapper.map(employee, EmployeesDto.class);
     }
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public EmployeesDto registerDepartment(@RequestBody EmployeesDto employeesDto) {
+    public EmployeesDto registerEmployee(@RequestBody EmployeesDto employeesDto) {
         Employees postRequest = modelMapper.map(employeesDto, Employees.class);
         Employees post = employessService.createOrEdit(postRequest);
         return modelMapper.map(post, EmployeesDto.class);
@@ -58,10 +66,9 @@ public class EmployeesController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public EmployeesDto updateDepartment(@PathVariable Integer id, @RequestBody EmployeesDto employeesDto) {
+    public EmployeesDto updateEmployee(@PathVariable Integer id, @RequestBody EmployeesDto employeesDto) {
         Employees post = employessService.updateEmployess(id, employeesDto);
         return modelMapper.map(post, EmployeesDto.class);
     }
 
-    
 }

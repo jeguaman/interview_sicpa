@@ -46,6 +46,14 @@ public class EnterprisesController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public EnterpriseDto getEmployee(@PathVariable Integer id) {
+        Enterprises employee = enterpriseService.findEnterpriseById(id);
+        return modelMapper.map(employee, EnterpriseDto.class);
+    }
+
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody

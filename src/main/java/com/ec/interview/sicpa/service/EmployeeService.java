@@ -32,7 +32,7 @@ public class EmployeeService {
         return repositoryEmployee.findAll();
     }
 
-    public Employees findDepartmentById(Integer id) {
+    public Employees findEmployeesById(Integer id) {
         Optional<Employees> result = repositoryEmployee.findById(id);
         if (result.isPresent()) {
             return result.get();
@@ -41,7 +41,7 @@ public class EmployeeService {
     }
 
     public Employees updateEmployess(Integer id, EmployeesDto employeeDto) {
-        Employees employess = findDepartmentById(id);
+        Employees employess = findEmployeesById(id);
         if (employess != null) {
             BeanUtils.copyProperties(employeeDto, employess, "id", "createdBy", "createdDate");
         }

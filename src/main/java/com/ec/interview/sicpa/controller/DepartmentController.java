@@ -46,6 +46,14 @@ public class DepartmentController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public DepartmentDto getDepartment(@PathVariable Integer id) {
+        Departments employee = departmentService.findDepartmentById(id);
+        return modelMapper.map(employee, DepartmentDto.class);
+    }
+
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
