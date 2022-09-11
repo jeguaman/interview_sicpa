@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "107bdb1c-e8c1-4103-9b49-a8b6abe5e1ed",
+		"name": "JEGG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2244092"
+	},
+	"item": [
+		{
+			"name": "SICPA",
+			"item": [
+				{
+					"name": "Enterprise Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//var current_timestamp = new Date();\r",
+									"//postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toUTCString());\r",
+									"// \"ActivityDateTime\":\"2018-03-29T13:34:00.000\"\r",
+									"let current = new Date();\r",
+									"let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();\r",
+									"let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds();\r",
+									"let dateTime = cDate + ' ' + cTime;\r",
+									"\r",
+									"pm.globals.set(\"current_date\", dateTime);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"createdBy\":\"jguaman\",\r\n    \"createdDate\":{{$timestamp}},\r\n    \"status\":true,\r\n    \"address\":\"Esto es una direccion 23\",\r\n    \"name\":\"Jose\",\r\n    \"phone\":\"0984211248\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/enterprises/register",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"enterprises",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enterprises Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modifiedBy\":\"jguamanMod\",\r\n    \"modifiedDate\":{{$timestamp}},\r\n    \"status\":false,\r\n    \"address\":\"Esto es una direccion modificada xD 23\",\r\n    \"name\":\"Jose Mod\",\r\n    \"phone\":\"0984211248\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/enterprises/:id",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"enterprises",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enterprise Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/enterprises",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"enterprises"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enterprise Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/enterprises/:id",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"enterprises",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department Create",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//var current_timestamp = new Date();\r",
+									"//postman.setEnvironmentVariable(\"current_timestamp\", current_timestamp.toUTCString());\r",
+									"// \"ActivityDateTime\":\"2018-03-29T13:34:00.000\"\r",
+									"let current = new Date();\r",
+									"let cDate = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();\r",
+									"let cTime = current.getHours() + \":\" + current.getMinutes() + \":\" + current.getSeconds();\r",
+									"let dateTime = cDate + ' ' + cTime;\r",
+									"\r",
+									"pm.globals.set(\"current_date\", dateTime);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"createdBy\":\"jguaman\",\r\n    \"createdDate\":{{$timestamp}},\r\n    \"status\":true,\r\n    \"description\":\"Esto es una prueba desde PostMan2\",\r\n    \"name\":\"Jose\",\r\n    \"phone\":\"0984211248\",\r\n    \"idEnterprise\":{\r\n        \"id\":2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/departments/register",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"departments",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modifiedBy\":\"jguaman MOD\",\r\n    \"modifiedDate\":{{$timestamp}},\r\n    \"status\":true,\r\n    \"description\":\"Esto es MODIFICADOOOO WWWW23\",\r\n    \"name\":\"Jose MOD\",\r\n    \"phone\":\"0984211248\",\r\n    \"idEnterprise\":{\r\n        \"id\":1\r\n    }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/departments/:id",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"departments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/departments",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"departments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Department Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/departments/:id",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"departments",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employees Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"createdBy\":\"jguaman\",\r\n    \"createdDate\":{{$timestamp}},\r\n    \"status\":true,\r\n    \"age\":32,\r\n    \"email\":\"jeguaman1@gmail.com\",\r\n    \"name\":\"Eduardo\",\r\n    \"position\":\"DEVELOPER\",\r\n    \"surname\":\"Guaman\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/employees/register",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"employees",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employees Edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"modifiedBy\":\"jguaman MOD\",\r\n    \"modifiedDate\":{{$timestamp}},\r\n    \"status\":false,\r\n    \"age\":33,\r\n    \"email\":\"jeguaman1mod@gmail.com\",\r\n    \"name\":\"Jose Mod\",\r\n    \"position\":\"DEVELOPER Mod\",\r\n    \"surname\":\"Guaman Mod\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_BASE}}/employees/:id",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employees Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/employees/:id",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"employees",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Employees Get All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_BASE}}/employees",
+							"host": [
+								"{{URL_BASE}}"
+							],
+							"path": [
+								"employees"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
